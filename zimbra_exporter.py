@@ -1,13 +1,12 @@
-#!/usr/bin/python3
 ##coding=utf-8
 # ------------------------------------------------------
 #
 # Zimbra Exporter
 #
-# Script by : Jason Cheng
-# Website : www.jason.tools / blog.jason.tools
-# Version : 1.0
-# Date : 2021/11/28
+# Script by : Jason Cheng & Dennis Anfossi
+# Website : www.jason.tools / blog.jason.tools / www.anfossi.tk
+# Version : 1.1
+# Date : 2025/08/11
 #
 # ------------------------------------------------------
 
@@ -40,6 +39,7 @@ PORT_WEBCLIENT = '443'
 
 # ------
 
+zimbra_path = os.popen('su - zimbra -c "echo $PATH"').read().strip()
 
 # -----
 # test
@@ -48,19 +48,13 @@ PORT_WEBCLIENT = '443'
 
 # -----
 
-
-
 # --------------
 # get info function
 def getcheck():
 
-# try:
-
     REGISTRY = CollectorRegistry(auto_describe=False)
 
-
     # -----
-
 
     # get stats
 
@@ -68,38 +62,33 @@ def getcheck():
     st = Gauge("zimbra_stats","Zimbra Stats:",["name"],registry=REGISTRY)
     for i in range(len(get_st)):
 
-      st_name = get_st[i].split(' ')[1].strip().split('=')[0]
-      st_value = int(get_st[i].split('=')[1].strip())
+        st_name = get_st[i].split(' ')[1].strip().split('=')[0]
+        st_value = int(get_st[i].split('=')[1].strip())
 
-      st.labels(st_name).set(st_value)
-
+        st.labels(st_name).set(st_value)
 
     # -----
 
-
     # get top usage
-
     if (EXCLUDE_DOMAIN ==''):
-      get_qu_cmd = '/bin/su - zimbra -c "zmprov getQuotaUsage ' + MAILSERVER + '| grep -v \"spam.\" | grep -v \"virus-quarantine.\" | head -n 6"'
+        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | head -n 6"'
     else:
-      get_qu_cmd = '/bin/su - zimbra -c "zmprov getQuotaUsage ' + MAILSERVER + '| grep -v \"' + EXCLUDE_DOMAIN + '\" | grep -v \"spam.\" | grep -v \"virus-quarantine.\" | head -n 6"'
-
+        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"{EXCLUDE_DOMAIN}\\" | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | head -n 6"'
+    
     get_qu = os.popen(get_qu_cmd).read().splitlines()
     qu = Gauge("zimbra_quota_usage","Zimbra User Quota Usage:",["name","usage"],registry=REGISTRY)
     for i in range(len(get_qu)):
 
-      qu_name = get_qu[i].split(' ')[0].strip()
-      qu_usage = int(get_qu[i].split(' ')[2].strip())
-      qu_quota = int(get_qu[i].split(' ')[1].strip())
-      qu_value = 0
-      if (qu_quota != 0 and qu_usage != 0):
-        qu_value = qu_usage / qu_quota
+        qu_name = get_qu[i].split(' ')[0].strip()
+        qu_usage = int(get_qu[i].split(' ')[2].strip())
+        qu_quota = int(get_qu[i].split(' ')[1].strip())
+        qu_value = 0
+        if (qu_quota != 0 and qu_usage != 0):
+            qu_value = qu_usage / qu_quota
 
-      qu.labels(qu_name,qu_usage).set(qu_value)
-
+        qu.labels(qu_name,qu_usage).set(qu_value)
 
     # -----
-
 
     # get port litsen
     pt = Gauge("zimbra_port","Zimbra Listen Ports:",["name","status"],registry=REGISTRY)
@@ -122,9 +111,7 @@ def getcheck():
     get_pt = os.popen('netstat -tnpl | grep nginx | cut -d ":" -f2 | cut -d " " -f1 | grep "' + PORT_POP3S + '"').read().strip()
     pt.labels("POP3S","LISTEN").set(1)
 
-
     # -----
-
 
     # get cpu, mem, iowait, uptime, df
     Gauge("zimbra_cpu_usage","CPU Usage:",registry=REGISTRY).set(psutil.cpu_percent())
@@ -132,22 +119,27 @@ def getcheck():
     Gauge("zimbra_iowait","IO_Wait:",registry=REGISTRY).set(str(psutil.cpu_times_percent()).split(",")[4].split("=")[1].strip())
     Gauge("zimbra_uptime","Up Time:",registry=REGISTRY).set((time.time()-psutil.boot_time())/60/60/24)
 
-    get_df = os.popen('df / --output=pcent | tail -n 1').read().strip().replace('%','')
+    get_df = os.popen('df /opt --output=pcent | tail -n 1').read().strip().replace('%','')
     zv = Gauge("zimbra_disk_usage","Disk Usage:",registry=REGISTRY).set(get_df)
 
-
     # get zimbra version
-    get_zv = os.popen('/bin/su - zimbra -c "/opt/zimbra/bin/zmcontrol -v"').read().split(' ')[6].strip()[:-1].replace("_"," ")
+    get_zv_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && /opt/zimbra/bin/zmcontrol -v | sed \'s/Release //g\'" | sed \'s/.GA.*//g\''
+    get_zv = os.popen(get_zv_cmd).read().strip()
     zv = Gauge("zimbra_version","Zimbra Version:",["version"],registry=REGISTRY)
-    zv.labels(get_zv).set(0)
-
+    zv.labels(get_zv).set(1)
 
     # -----
 
-
     # get all accounts
     acc = Gauge("zimbra_account_status_total","Zimbra Account Status Total",["name"],registry=REGISTRY)
-    os.popen('/bin/su - zimbra -c "/opt/zimbra/bin/zmaccts | grep -v \"spam.\" | grep -v \"virus-quarantine.\" | grep -v total > /tmp/zm_ex_accts.txt"')
+    
+    perl_lib_path = "/opt/zimbra/common/lib/perl5"
+    get_accts_cmd = f'/bin/su - zimbra -c "PERL5LIB={perl_lib_path} /opt/zimbra/bin/zmaccts | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | grep -v total > /tmp/zm_ex_accts.txt"'
+    
+    try:
+        os.system(get_accts_cmd)
+    except Exception as e:
+        print(f"Errore durante l'esecuzione di zmaccts: {e}")
 
     # active accounts
     get_acc = os.popen('cat /tmp/zm_ex_accts.txt | grep -v total | grep active | grep "@" | wc -l').read().strip()
@@ -166,53 +158,45 @@ def getcheck():
     acc.labels("maintenance").set(get_acc)
 
     # admin accounts
-    get_acc = os.popen('/bin/su - zimbra -c "/opt/zimbra/bin/zmprov gaaa | wc -l"').read().strip()
+    get_acc = os.popen(f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && /opt/zimbra/bin/zmprov gaaa | wc -l"').read().strip()
     acc.labels("admin").set(get_acc)
-
 
     # -----
 
-
     # get zimbra service
-    get_sv = os.popen('/bin/su - zimbra -c "/opt/zimbra/bin/zmcontrol status"').read().splitlines()
+    get_sv = os.popen(f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && /opt/zimbra/bin/zmcontrol status"').read().splitlines()
     sv = Gauge("zimbra_service_status","Zimbra Service Status",["name","status"],registry=REGISTRY)
     for i in range(len(get_sv)):
 
-      sv_value = 0
-      sv_name = get_sv[i][0:24].strip()
-      sv_status = get_sv[i][25:].strip()
+        sv_value = 0
+        sv_name = get_sv[i][0:24].strip()
+        sv_status = get_sv[i][25:].strip()
 
-      if (get_sv[i][0:4].strip() != 'Host'):
-        if (sv_status == 'Running'):
-          sv_value = 1
-        else:
-          if (get_sv[i].find("Stopped") > 0):
-            sv_name = get_sv[i][0:24].strip()
-            sv_status = "Stopped"
-          elif (get_sv[i].find("is not running") > 0):
-            continue
+        if (get_sv[i][0:4].strip() != 'Host'):
+            if (sv_status == 'Running'):
+                sv_value = 1
+            else:
+                if (get_sv[i].find("Stopped") > 0):
+                    sv_name = get_sv[i][0:24].strip()
+                    sv_status = "Stopped"
+                elif (get_sv[i].find("is not running") > 0):
+                    continue
 
-        sv.labels(sv_name, sv_status).set(sv_value)
-
+            sv.labels(sv_name, sv_status).set(sv_value)
 
     # -----
-
 
     # get queue
     get_zmq = os.popen('/opt/zimbra/libexec/zmqstat').read().splitlines()
     zmq = Gauge("zimbra_queue","-",["name"],registry=REGISTRY)
     for i in range(len(get_zmq)):
-      zmq.labels(get_zmq[i].split('=')[0].strip()).set(get_zmq[i].split('=')[1].strip())
-
+        zmq.labels(get_zmq[i].split('=')[0].strip()).set(get_zmq[i].split('=')[1].strip())
 
     # -----
-
 
     return prometheus_client.generate_latest(REGISTRY)
 
-
     # -----
-
 
 # metric route
 app = Flask(__name__)
