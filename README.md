@@ -10,11 +10,11 @@ Zimbra Prometheus Exporter + Grafana Dashboard
 
 
 The following environment is tested:
-* Ubuntu 18.04
-* Zimbra 8.8.15 
-* Python 3.6 & PIP3
-* Prometheus 2.18
-* Grafana 8.2.5
+* Ubuntu 22.04
+* Zimbra 10.1.10
+* Python 3.10 & PIP3
+* Prometheus 3.5.0
+* Grafana 12.1.0
 
 
 ---
@@ -31,7 +31,7 @@ pip3 install psutil
 wget https://raw.githubusercontent.com/jasoncheng7115/zimbra_dashboards/main/zimbra_exporter.py -O /opt/zimbra_exporter.py
 chmod +x /opt/zimbra_exporter.py
 
-wget https://raw.githubusercontent.com/jmutai/telegraf-ansible/master/templates/zimbra_pflogsumm.pl.j2 -O /opt/zimbra_pflogsumm.pl
+wget https://raw.githubusercontent.com/jasoncheng7115/zimbra_dashboards/main/zimbra_pflogsumm.pl -O /opt/zimbra_pflogsumm.pl
 chmod +x /opt/zimbra_pflogsumm.pl
 ```
 
