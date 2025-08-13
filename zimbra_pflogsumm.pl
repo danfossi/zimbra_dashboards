@@ -23,23 +23,22 @@ my %stats = (
     'recipient_hosts_domains' => 0
 );
 
-
 foreach my $line (split /\n/, $pflogsumm_output) {
-    if ($line =~ /(\d+)\s+received/) { $stats{'received'} = $1; }
-    if ($line =~ /(\d+)\s+delivered/) { $stats{'delivered'} = $1; }
-    if ($line =~ /(\d+)\s+forwarded/) { $stats{'forwarded'} = $1; }
-    if ($line =~ /(\d+)\s+deferred/) { $stats{'deferred'} = $1; }
-    if ($line =~ /(\d+)\s+bounced/) { $stats{'bounced'} = $1; }
-    if ($line =~ /(\d+)\s+rejected/) { $stats{'rejected'} = $1; }
-    if ($line =~ /(\d+)\s+reject warnings/) { $stats{'reject_warnings'} = $1; }
-    if ($line =~ /(\d+)\s+held/) { $stats{'held'} = $1; }
-    if ($line =~ /(\d+)\s+discarded/) { $stats{'discarded'} = $1; }
-    if ($line =~ /(\d+)\s+bytes\s+received/) { $stats{'bytes_received'} = $1; }
-    if ($line =~ /(\d+)\s+bytes\s+delivered/) { $stats{'bytes_delivered'} = $1; }
-    if ($line =~ /(\d+)\s+senders/) { $stats{'senders'} = $1; }
-    if ($line =~ /sending hosts\/domains:\s+(\d+)/) { $stats{'sending_hosts_domains'} = $1; }
-    if ($line =~ /(\d+)\s+recipients/) { $stats{'recipients'} = $1; }
-    if ($line =~ /recipient hosts\/domains:\s+(\d+)/) { $stats{'recipient_hosts_domains'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+received/) { $stats{'received'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+delivered/) { $stats{'delivered'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+forwarded/) { $stats{'forwarded'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+deferred/) { $stats{'deferred'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+bounced/) { $stats{'bounced'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+rejected/) { $stats{'rejected'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+reject warnings/) { $stats{'reject_warnings'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+held/) { $stats{'held'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+discarded/) { $stats{'discarded'} = $1; }
+    if ($line =~ /^\s*(\d+)k\s+bytes\s+received/) { $stats{'bytes_received'} = $1 * 1024; }
+    if ($line =~ /^\s*(\d+)k\s+bytes\s+delivered/) { $stats{'bytes_delivered'} = $1 * 1024; }
+    if ($line =~ /^\s*(\d+)\s+senders/) { $stats{'senders'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+sending\s+hosts\/domains/) { $stats{'sending_hosts_domains'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+recipients/) { $stats{'recipients'} = $1; }
+    if ($line =~ /^\s*(\d+)\s+recipient\s+hosts\/domains/) { $stats{'recipient_hosts_domains'} = $1; }
 }
 
 foreach my $key (sort keys %stats) {
