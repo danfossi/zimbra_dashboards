@@ -42,10 +42,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -108,10 +105,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -158,10 +152,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "sum(zimbra_account_status_total{})",
           "instant": true,
@@ -174,10 +165,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -226,10 +214,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_uptime",
           "instant": true,
@@ -242,10 +227,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -302,10 +284,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_cpu_usage",
           "instant": true,
@@ -318,10 +297,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -378,10 +354,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_mem_usage",
           "instant": true,
@@ -394,10 +367,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -454,10 +424,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_disk_usage",
           "instant": true,
@@ -470,10 +437,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -532,10 +496,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_iowait",
           "instant": false,
@@ -561,10 +522,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -642,10 +600,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_service_status ",
           "format": "time_series",
@@ -659,10 +614,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -740,10 +692,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_port",
           "format": "time_series",
@@ -770,10 +719,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -824,10 +770,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_queue{name=\"active\"}",
           "instant": true,
@@ -840,10 +783,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -894,10 +834,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_queue{name=\"incoming\"}",
           "instant": true,
@@ -910,10 +847,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -964,10 +898,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_queue{name=\"hold\"}",
           "instant": true,
@@ -980,10 +911,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1034,10 +962,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_queue{name=\"corrupt\"}",
           "instant": true,
@@ -1050,10 +975,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1104,10 +1026,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_queue{name=\"deferred\"}",
           "instant": true,
@@ -1120,10 +1039,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1201,10 +1117,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_queue{}",
           "interval": "",
@@ -1229,10 +1142,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1279,10 +1189,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"active\"}",
           "instant": true,
@@ -1295,10 +1202,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1345,10 +1249,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "editorMode": "code",
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"locked\"}",
@@ -1362,10 +1263,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1416,10 +1314,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "editorMode": "code",
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"closed\"}",
@@ -1433,10 +1328,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1487,10 +1379,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"maintenance\"}",
           "instant": true,
@@ -1503,10 +1392,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1557,10 +1443,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "editorMode": "code",
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"admin\"}",
@@ -1574,10 +1457,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1651,10 +1531,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "editorMode": "code",
           "exemplar": true,
           "expr": "sort_desc(zimbra_quota_usage)",
@@ -1682,10 +1559,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1734,10 +1608,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"bytes_received\"}",
           "instant": true,
@@ -1750,10 +1621,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1800,10 +1668,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"received\"}",
           "instant": true,
@@ -1816,10 +1681,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1868,10 +1730,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"senders\"}",
           "instant": true,
@@ -1884,10 +1743,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1934,10 +1790,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"deferred\"}",
           "instant": true,
@@ -1950,10 +1803,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2000,10 +1850,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"rejected\"}",
           "instant": true,
@@ -2016,10 +1863,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2066,10 +1910,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"held\"}",
           "instant": true,
@@ -2082,10 +1923,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2132,10 +1970,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"discarded\"}",
           "instant": true,
@@ -2148,10 +1983,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2198,10 +2030,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"bounced\"}",
           "instant": true,
@@ -2214,10 +2043,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2266,10 +2092,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"bytes_delivered\"}",
           "instant": true,
@@ -2282,10 +2105,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2332,10 +2152,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"delivered\"}",
           "instant": true,
@@ -2348,10 +2165,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2400,10 +2214,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"recipients\"}",
           "instant": true,
@@ -2416,10 +2227,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2466,10 +2274,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"forwarded\"}",
           "instant": true,
@@ -2482,10 +2287,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "beu9r93zq6tc0a"
-      },
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2532,10 +2334,7 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "beu9r93zq6tc0a"
-          },
+          "datasource": null,
           "exemplar": true,
           "expr": "zimbra_stats{name=\"reject_warnings\"}",
           "instant": true,
