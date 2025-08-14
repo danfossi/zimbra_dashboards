@@ -1,42 +1,12 @@
 {
-  "__inputs": [],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.2.5"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -51,17 +21,15 @@
       }
     ]
   },
+  "description": "Zimbra Prometheus Exporter + Grafana Dashboard",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
+  "id": 11,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -74,7 +42,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -85,8 +56,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "text",
-                "value": null
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -95,16 +70,17 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
+        "w": 4,
         "x": 0,
         "y": 1
       },
-      "id": 8,
+      "id": 56,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -112,17 +88,19 @@
           "fields": "",
           "values": false
         },
-        "text": {},
-        "textMode": "name"
+        "showPercentChange": false,
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
-          "exemplar": true,
+          "editorMode": "code",
+          "exemplar": false,
           "expr": "zimbra_version{}",
           "instant": true,
-          "interval": "",
           "legendFormat": "{{version}}",
+          "range": false,
           "refId": "A"
         }
       ],
@@ -130,7 +108,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -142,7 +123,7 @@
             "steps": [
               {
                 "color": "text",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -151,8 +132,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
-        "x": 6,
+        "w": 4,
+        "x": 4,
         "y": 1
       },
       "id": 25,
@@ -161,6 +142,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -168,12 +150,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "sum(zimbra_account_status_total{})",
           "instant": true,
@@ -186,7 +174,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -199,7 +190,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -210,7 +201,7 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 9,
+        "x": 8,
         "y": 1
       },
       "id": 34,
@@ -219,6 +210,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -226,12 +218,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_uptime",
           "instant": true,
@@ -244,7 +242,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -259,7 +260,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "orange",
@@ -277,12 +278,14 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 2,
-        "x": 12,
+        "w": 3,
+        "x": 11,
         "y": 1
       },
       "id": 28,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -293,11 +296,16 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_cpu_usage",
           "instant": true,
@@ -310,7 +318,10 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -325,7 +336,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "orange",
@@ -343,12 +354,14 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 2,
+        "w": 3,
         "x": 14,
         "y": 1
       },
       "id": 22,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -359,11 +372,16 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_mem_usage",
           "instant": true,
@@ -376,7 +394,10 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -391,7 +412,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "orange",
@@ -409,12 +430,14 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 2,
-        "x": 16,
+        "w": 3,
+        "x": 17,
         "y": 1
       },
       "id": 55,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -425,11 +448,16 @@
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
+        "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_disk_usage",
           "instant": true,
@@ -442,7 +470,10 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -457,7 +488,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "orange",
@@ -475,8 +506,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 18,
+        "w": 4,
+        "x": 20,
         "y": 1
       },
       "id": 29,
@@ -485,6 +516,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -492,12 +524,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_iowait",
           "instant": false,
@@ -511,7 +549,6 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -524,7 +561,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -560,7 +600,7 @@
             "steps": [
               {
                 "color": "dark-red",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -572,8 +612,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
-        "w": 18,
+        "h": 6,
+        "w": 24,
         "x": 0,
         "y": 5
       },
@@ -583,6 +623,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -590,15 +631,21 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {
           "titleSize": 17,
           "valueSize": 14
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_service_status ",
           "format": "time_series",
@@ -612,7 +659,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -648,7 +698,7 @@
             "steps": [
               {
                 "color": "dark-red",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -660,10 +710,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 18,
-        "y": 5
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 11
       },
       "id": 33,
       "options": {
@@ -671,6 +721,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -678,15 +729,21 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {
           "titleSize": 14,
           "valueSize": 14
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_port",
           "format": "time_series",
@@ -701,12 +758,11 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 14
       },
       "id": 17,
       "panels": [],
@@ -714,7 +770,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -726,7 +785,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -741,7 +800,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 10
+        "y": 15
       },
       "id": 6,
       "options": {
@@ -749,6 +808,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -756,12 +816,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_queue{name=\"active\"}",
           "instant": true,
@@ -774,7 +840,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -786,7 +855,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -801,7 +870,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 10
+        "y": 15
       },
       "id": 13,
       "options": {
@@ -809,6 +878,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -816,12 +886,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_queue{name=\"incoming\"}",
           "instant": true,
@@ -834,7 +910,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -846,7 +925,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -861,7 +940,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 10
+        "y": 15
       },
       "id": 5,
       "options": {
@@ -869,6 +948,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -876,12 +956,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_queue{name=\"hold\"}",
           "instant": true,
@@ -894,7 +980,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -906,7 +995,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -921,7 +1010,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 10
+        "y": 15
       },
       "id": 4,
       "options": {
@@ -929,6 +1018,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -936,12 +1026,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_queue{name=\"corrupt\"}",
           "instant": true,
@@ -954,7 +1050,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -966,7 +1065,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -981,7 +1080,7 @@
         "h": 4,
         "w": 3,
         "x": 12,
-        "y": 10
+        "y": 15
       },
       "id": 3,
       "options": {
@@ -989,6 +1088,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -996,12 +1096,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_queue{name=\"deferred\"}",
           "instant": true,
@@ -1014,16 +1120,23 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1032,6 +1145,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineStyle": {
               "fill": "solid"
@@ -1057,7 +1171,7 @@
             "steps": [
               {
                 "color": "dark-red",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1068,22 +1182,29 @@
         "h": 4,
         "w": 9,
         "x": 15,
-        "y": 10
+        "y": 15
       },
       "id": 11,
       "options": {
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_queue{}",
           "interval": "",
@@ -1096,12 +1217,11 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 19
       },
       "id": 15,
       "panels": [],
@@ -1109,7 +1229,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1121,7 +1244,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1132,7 +1255,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 15
+        "y": 20
       },
       "id": 2,
       "options": {
@@ -1140,6 +1263,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1147,12 +1271,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"active\"}",
           "instant": true,
@@ -1165,7 +1295,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1177,7 +1310,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1188,7 +1321,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 15
+        "y": 20
       },
       "id": 39,
       "options": {
@@ -1196,6 +1329,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1203,25 +1337,35 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "zimbra_account_status_total{name=\"active\"}",
+          "expr": "zimbra_account_status_total{name=\"locked\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Active",
+      "title": "Locked",
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1233,7 +1377,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1248,7 +1392,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 15
+        "y": 20
       },
       "id": 23,
       "options": {
@@ -1256,6 +1400,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1263,12 +1408,19 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"closed\"}",
           "instant": true,
@@ -1281,7 +1433,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1293,7 +1448,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1308,7 +1463,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 15
+        "y": 20
       },
       "id": 24,
       "options": {
@@ -1316,6 +1471,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1323,12 +1479,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_account_status_total{name=\"maintenance\"}",
           "instant": true,
@@ -1341,7 +1503,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1353,10 +1518,10 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
-                "color": "red",
+                "color": "green",
                 "value": 2
               }
             ]
@@ -1368,7 +1533,7 @@
         "h": 4,
         "w": 3,
         "x": 12,
-        "y": 15
+        "y": 20
       },
       "id": 26,
       "options": {
@@ -1376,6 +1541,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1383,14 +1549,21 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "zimbra_account_status_total{name=\"closed\"}",
+          "expr": "zimbra_account_status_total{name=\"admin\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1401,7 +1574,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1416,7 +1592,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "blue",
@@ -1444,11 +1620,21 @@
         "h": 4,
         "w": 9,
         "x": 15,
-        "y": 15
+        "y": 20
       },
       "id": 36,
       "options": {
         "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -1458,13 +1644,20 @@
           "values": false
         },
         "showUnfilled": true,
-        "text": {}
+        "sizing": "auto",
+        "text": {},
+        "valueMode": "color"
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "zimbra_quota_usage",
+          "expr": "sort_desc(zimbra_quota_usage)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1473,17 +1666,15 @@
         }
       ],
       "title": "Usage",
-      "transformations": [],
       "type": "bargauge"
     },
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 24
       },
       "id": 38,
       "panels": [],
@@ -1491,7 +1682,10 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1504,7 +1698,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -1516,7 +1710,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 20
+        "y": 25
       },
       "id": 53,
       "options": {
@@ -1524,6 +1718,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1531,12 +1726,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"bytes_received\"}",
           "instant": true,
@@ -1549,7 +1750,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1561,7 +1765,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1572,7 +1776,7 @@
         "h": 3,
         "w": 3,
         "x": 3,
-        "y": 20
+        "y": 25
       },
       "id": 27,
       "options": {
@@ -1580,6 +1784,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1587,12 +1792,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"received\"}",
           "instant": true,
@@ -1605,7 +1816,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1618,7 +1832,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -1630,7 +1844,7 @@
         "h": 3,
         "w": 3,
         "x": 6,
-        "y": 20
+        "y": 25
       },
       "id": 54,
       "options": {
@@ -1638,6 +1852,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1645,12 +1860,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"senders\"}",
           "instant": true,
@@ -1663,7 +1884,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1675,7 +1899,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1686,7 +1910,7 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 20
+        "y": 25
       },
       "id": 42,
       "options": {
@@ -1694,6 +1918,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1701,12 +1926,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"deferred\"}",
           "instant": true,
@@ -1719,7 +1950,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1731,7 +1965,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1742,7 +1976,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 20
+        "y": 25
       },
       "id": 44,
       "options": {
@@ -1750,6 +1984,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1757,12 +1992,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"rejected\"}",
           "instant": true,
@@ -1775,7 +2016,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1787,7 +2031,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1798,7 +2042,7 @@
         "h": 3,
         "w": 3,
         "x": 15,
-        "y": 20
+        "y": 25
       },
       "id": 46,
       "options": {
@@ -1806,6 +2050,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1813,12 +2058,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"held\"}",
           "instant": true,
@@ -1831,7 +2082,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1843,7 +2097,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1854,7 +2108,7 @@
         "h": 3,
         "w": 3,
         "x": 18,
-        "y": 20
+        "y": 25
       },
       "id": 40,
       "options": {
@@ -1862,6 +2116,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1869,12 +2124,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"discarded\"}",
           "instant": true,
@@ -1887,7 +2148,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1899,7 +2163,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -1910,7 +2174,7 @@
         "h": 3,
         "w": 3,
         "x": 21,
-        "y": 20
+        "y": 25
       },
       "id": 43,
       "options": {
@@ -1918,6 +2182,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1925,12 +2190,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"bounced\"}",
           "instant": true,
@@ -1943,7 +2214,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1956,7 +2230,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -1968,7 +2242,7 @@
         "h": 3,
         "w": 3,
         "x": 0,
-        "y": 23
+        "y": 28
       },
       "id": 49,
       "options": {
@@ -1976,6 +2250,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -1983,12 +2258,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"bytes_delivered\"}",
           "instant": true,
@@ -2001,7 +2282,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2013,7 +2297,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -2024,7 +2308,7 @@
         "h": 3,
         "w": 3,
         "x": 3,
-        "y": 23
+        "y": 28
       },
       "id": 47,
       "options": {
@@ -2032,6 +2316,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2039,12 +2324,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"delivered\"}",
           "instant": true,
@@ -2057,7 +2348,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2070,7 +2364,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -2082,7 +2376,7 @@
         "h": 3,
         "w": 3,
         "x": 6,
-        "y": 23
+        "y": 28
       },
       "id": 51,
       "options": {
@@ -2090,6 +2384,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2097,12 +2392,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"recipients\"}",
           "instant": true,
@@ -2115,7 +2416,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2127,7 +2431,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -2138,7 +2442,7 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 23
+        "y": 28
       },
       "id": 41,
       "options": {
@@ -2146,6 +2450,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2153,12 +2458,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"forwarded\"}",
           "instant": true,
@@ -2171,7 +2482,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "beu9r93zq6tc0a"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2183,7 +2497,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           }
@@ -2194,7 +2508,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 23
+        "y": 28
       },
       "id": 45,
       "options": {
@@ -2202,6 +2516,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -2209,12 +2524,18 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.2.5",
+      "pluginVersion": "12.1.0",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "beu9r93zq6tc0a"
+          },
           "exemplar": true,
           "expr": "zimbra_stats{name=\"reject_warnings\"}",
           "instant": true,
@@ -2227,9 +2548,9 @@
       "type": "stat"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 32,
-  "style": "dark",
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
@@ -2242,5 +2563,5 @@
   "timezone": "",
   "title": "Zimbra Dashboard",
   "uid": "7w_fJYt7k",
-  "version": 36
+  "version": 11
 }
