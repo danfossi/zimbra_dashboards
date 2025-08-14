@@ -71,9 +71,9 @@ def getcheck():
 
     # get top usage
     if (EXCLUDE_DOMAIN ==''):
-        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | head -n 6"'
+        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | sort -nr -k 2"'
     else:
-        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"{EXCLUDE_DOMAIN}\\" | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | head -n 6"'
+        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"{EXCLUDE_DOMAIN}\\" | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | sort -nr -k 2"'
     
     get_qu = os.popen(get_qu_cmd).read().splitlines()
     qu = Gauge("zimbra_quota_usage","Zimbra User Quota Usage:",["name","usage"],registry=REGISTRY)
@@ -133,6 +133,7 @@ def getcheck():
     # get all accounts
     acc = Gauge("zimbra_account_status_total","Zimbra Account Status Total",["name"],registry=REGISTRY)
     
+    # Esegue il comando zmaccts specificando esplicitamente il percorso della libreria Perl.
     perl_lib_path = "/opt/zimbra/common/lib/perl5"
     get_accts_cmd = f'/bin/su - zimbra -c "PERL5LIB={perl_lib_path} /opt/zimbra/bin/zmaccts | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | grep -v total > /tmp/zm_ex_accts.txt"'
     
