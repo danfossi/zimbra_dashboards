@@ -33,6 +33,8 @@ chmod +x /opt/zimbra_exporter.py
 
 wget https://raw.githubusercontent.com/danfossi/zimbra_dashboards/main/zimbra_pflogsumm.pl -O /opt/zimbra_pflogsumm.pl
 chmod +x /opt/zimbra_pflogsumm.pl
+
+wget https://raw.githubusercontent.com/danfossi/zimbra_dashboards/main/99_node_exporter -O /etc/sudoers.d/99_node_exporter
 ```
 
 >  p.s: the zimbra part of the stats information uses jmutai's "zimbra_pflogsumm.pl" to get log statistics.
@@ -74,6 +76,7 @@ PORT_WEBCLIENT = '443'
 wget https://raw.githubusercontent.com/danfossi/zimbra_dashboards/main/zimbra_exporter.service -O /etc/systemd/system/zimbra_exporter.service
 
 systemctl daemon-reload
-systemctl start zimbra_exporter
 systemctl enable zimbra_exporter
+systemctl start zimbra_exporter
+systemctl status zimbra_exporter
 ```
