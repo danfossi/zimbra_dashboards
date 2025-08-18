@@ -1,0 +1,1 @@
+zimbra ALL=(ALL) NOPASSWD: /opt/zimbra/libexec/zmqstat
