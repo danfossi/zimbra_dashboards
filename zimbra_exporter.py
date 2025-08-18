@@ -5,8 +5,8 @@
 #
 # Script by : Jason Cheng & Dennis Anfossi
 # Website : www.jason.tools / blog.jason.tools / www.anfossi.tk
-# Version : 1.1
-# Date : 2025/08/11
+# Version : 1.2
+# Date : 2025/08/18
 #
 # ------------------------------------------------------
 
@@ -39,16 +39,6 @@ PORT_WEBCLIENT = '443'
 
 # ------
 
-zimbra_path = os.popen('su - zimbra -c "echo $PATH"').read().strip()
-
-# -----
-# test
-
-# print(test)
-
-# -----
-
-# --------------
 # get info function
 def getcheck():
 
@@ -71,9 +61,9 @@ def getcheck():
 
     # get top usage
     if (EXCLUDE_DOMAIN ==''):
-        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | sort -nr -k 2"'
+        get_qu_cmd = f"/opt/zimbra/bin/zmprov getQuotaUsage {MAILSERVER} | grep -v 'spam.' | grep -v 'virus-quarantine.' | sort -nr -k 2"
     else:
-        get_qu_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && zmprov getQuotaUsage {MAILSERVER}| grep -v \\"{EXCLUDE_DOMAIN}\\" | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | sort -nr -k 2"'
+        get_qu_cmd = f"/opt/zimbra/bin/zmprov getQuotaUsage {MAILSERVER} | grep -v '{EXCLUDE_DOMAIN}' | grep -v 'spam.' | grep -v 'virus-quarantine.' | sort -nr -k 2"
     
     get_qu = os.popen(get_qu_cmd).read().splitlines()
     qu = Gauge("zimbra_quota_usage","Zimbra User Quota Usage:",["name","usage"],registry=REGISTRY)
@@ -123,8 +113,7 @@ def getcheck():
     zv = Gauge("zimbra_disk_usage","Disk Usage:",registry=REGISTRY).set(get_df)
 
     # get zimbra version
-    get_zv_cmd = f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && /opt/zimbra/bin/zmcontrol -v | sed \'s/Release //g\'" | sed \'s/.GA.*//g\''
-    get_zv = os.popen(get_zv_cmd).read().strip()
+    get_zv = os.popen('/opt/zimbra/bin/zmcontrol -v | sed \'s/Release //g\' | sed \'s/.GA.*//g\'').read().strip()
     zv = Gauge("zimbra_version","Zimbra Version:",["version"],registry=REGISTRY)
     zv.labels(get_zv).set(1)
 
@@ -135,7 +124,7 @@ def getcheck():
     
     # Esegue il comando zmaccts specificando esplicitamente il percorso della libreria Perl.
     perl_lib_path = "/opt/zimbra/common/lib/perl5"
-    get_accts_cmd = f'/bin/su - zimbra -c "PERL5LIB={perl_lib_path} /opt/zimbra/bin/zmaccts | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | grep -v total > /tmp/zm_ex_accts.txt"'
+    get_accts_cmd = f'PERL5LIB={perl_lib_path} /opt/zimbra/bin/zmaccts | grep -v \\"spam.\\" | grep -v \\"virus-quarantine.\\" | grep -v total > /tmp/zm_ex_accts.txt'
     
     try:
         os.system(get_accts_cmd)
@@ -159,13 +148,13 @@ def getcheck():
     acc.labels("maintenance").set(get_acc)
 
     # admin accounts
-    get_acc = os.popen(f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && /opt/zimbra/bin/zmprov gaaa | wc -l"').read().strip()
+    get_acc = os.popen('/opt/zimbra/bin/zmprov gaaa | wc -l').read().strip()
     acc.labels("admin").set(get_acc)
 
     # -----
 
     # get zimbra service
-    get_sv = os.popen(f'/bin/su - zimbra -c "PATH={zimbra_path}:$PATH && /opt/zimbra/bin/zmcontrol status"').read().splitlines()
+    get_sv = os.popen('/opt/zimbra/bin/zmcontrol status').read().splitlines()
     sv = Gauge("zimbra_service_status","Zimbra Service Status",["name","status"],registry=REGISTRY)
     for i in range(len(get_sv)):
 
@@ -188,7 +177,7 @@ def getcheck():
     # -----
 
     # get queue
-    get_zmq = os.popen('/opt/zimbra/libexec/zmqstat').read().splitlines()
+    get_zmq = os.popen('sudo /opt/zimbra/libexec/zmqstat').read().splitlines()
     zmq = Gauge("zimbra_queue","-",["name"],registry=REGISTRY)
     for i in range(len(get_zmq)):
         zmq.labels(get_zmq[i].split('=')[0].strip()).set(get_zmq[i].split('=')[1].strip())
