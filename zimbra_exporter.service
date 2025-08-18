@@ -5,7 +5,11 @@ After=network-online.target
 
 [Service]
 Type=simple
+User=zimbra
 ExecStart=/opt/zimbra_exporter.py
-       
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+
 [Install]
 WantedBy=multi-user.target
